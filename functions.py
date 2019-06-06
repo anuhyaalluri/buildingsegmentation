@@ -50,29 +50,4 @@ def batch_norm(_input, name, is_train):
         tf.summary.histogram("normed", normed)
         return normed
     
-    #old code
-
-    # with tf.variable_scope(name):
-    #     input_shape = _input.get_shape().as_list()
-    #     out_depth = input_shape[-1]
-
-    #     offset = tf.get_variable("offset", [out_depth], initializer=tf.constant_initializer(0.0))
-    #     scale = tf.constant(1.0)
-
-    #     batch_mean, batch_var = tf.nn.moments(_input, [0, 1, 2], name='moments')
-    #     exp_mov_ave = tf.train.ExponentialMovingAverage(decay=0.9)
-        
-    #     def mean_var_train():
-    #         update_exp_mov_ave = exp_mov_ave.apply([batch_mean, batch_var])
-    #         tf.add_to_collection("update_bn", update_exp_mov_ave)
-    #         return tf.identity(batch_mean), tf.identity(batch_var)
-
-    #     def mean_var_test():
-    #         return exp_mov_ave.average(batch_mean), exp_mov_ave.average(batch_var)
-
-    #     mean, var = tf.cond(is_train, mean_var_train, mean_var_test)
-    #     normed = tf.nn.batch_normalization(_input, mean, var, offset, scale, 1e-5)
-
-    #     tf.summary.histogram("normed", normed)
-
-    #     return normed
+    
