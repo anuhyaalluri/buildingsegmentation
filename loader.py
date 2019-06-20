@@ -1,6 +1,3 @@
-## Starts new threads for loading data into the memory.
-## "processor" function passed as an argument to constructor
-## is responsible for reading and preprocessing the data.
 
 from queue import Queue, Full
 import random
